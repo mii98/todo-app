@@ -1,0 +1,193 @@
+body:has(.delete-task-overlay) {
+    overflow: hidden;
+}
+
+.delete-task-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px;
+
+    background-color: rgb(20 34 28 / 48%);
+    backdrop-filter: blur(3px);
+}
+
+.delete-task-modal {
+    flex: 0 1 440px;
+
+    width: 100%;
+    min-width: 0;
+    max-width: 440px;
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    padding: 28px;
+
+    color: var(--color-text);
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+
+    box-shadow: 0 24px 80px rgb(20 34 28 / 20%);
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.delete-task-modal__eyebrow {
+    margin: 0 0 10px;
+
+    color: var(--color-danger);
+
+    font-size: 0.6875rem;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+}
+
+.delete-task-modal__title {
+    margin: 0;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.03em;
+}
+
+.delete-task-modal__description {
+    margin: 12px 0 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.875rem;
+    line-height: 1.7;
+}
+
+.delete-task-modal__preview {
+    margin-top: 24px;
+    padding: 16px;
+
+    background-color: var(--color-surface-muted);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-small);
+}
+
+.delete-task-modal__label {
+    margin: 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+.delete-task-modal__task-name {
+    margin: 6px 0 0;
+
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+}
+
+.delete-task-modal__actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-top: 24px;
+    padding-top: 20px;
+
+    border-top: 1px solid var(--color-border);
+}
+
+.delete-task-modal__button {
+    min-height: 44px;
+    padding: 11px 16px;
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-small);
+
+    font: inherit;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.5;
+
+    cursor: pointer;
+
+    transition:
+        background-color 150ms ease,
+        border-color 150ms ease;
+}
+
+.delete-task-modal__button:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+}
+
+.delete-task-modal__button--secondary {
+    color: var(--color-text);
+    background-color: var(--color-surface);
+
+    border-color: var(--color-border);
+}
+
+.delete-task-modal__button--secondary:hover {
+    background-color: var(--color-surface-muted);
+    border-color: #a8b5aa;
+}
+
+.delete-task-modal__button--secondary:active {
+    background-color: #e1e7df;
+}
+
+.delete-task-modal__button--danger {
+    color: #ffffff;
+    background-color: var(--color-danger);
+}
+
+.delete-task-modal__button--danger:hover {
+    background-color: #961d14;
+}
+
+.delete-task-modal__button--danger:active {
+    background-color: #7d180f;
+}
+
+.delete-task-modal__error {
+    margin: 16px 0 0;
+
+    color: var(--color-danger);
+
+    font-size: 0.75rem;
+    line-height: 1.6;
+}
+
+.delete-task-modal__button:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+@media (max-width: 480px) {
+    .delete-task-modal {
+        padding: 24px 20px;
+    }
+
+    .delete-task-modal__button {
+        flex: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .delete-task-modal__button {
+        transition: none;
+    }
+}

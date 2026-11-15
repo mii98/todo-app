@@ -1,0 +1,54 @@
+.app {
+    padding: 64px 32px 80px;
+}
+
+.app__container {
+    width: 100%;
+    max-width: 1120px;
+    margin-inline: auto;
+}
+
+.app__workspace {
+    display: grid;
+    grid-template-columns: 340px minmax(0, 1fr);
+    align-items: start;
+    gap: 24px;
+}
+
+.app__tasks {
+    display: grid;
+    gap: 20px;
+    min-width: 0;
+}
+
+.app__status {
+    margin: 0;
+    padding: 24px;
+
+    color: var(--color-text-muted);
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.app__status--error {
+    color: var(--color-danger);
+    background-color: var(--color-danger-soft);
+    border-color: var(--color-danger);
+}
+
+@media (max-width: 860px) {
+    .app__workspace {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .app {
+        padding: 32px 20px 48px;
+    }
+}
