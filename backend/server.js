@@ -11,8 +11,10 @@ mongoose.connect(process.env.DATEBASE)
     .then(() => {
         console.log('Datebase connected');
 
-        app.listen(8000, () => {
-            console.log('Server is running on port 8000...');
+        const port = Number(process.env.PORT || 8000);
+
+        app.listen(port, '0.0.0.0', () => {
+            console.log(`Server is running on port ${port}...`);
         })
     })
     .catch((err) => {
