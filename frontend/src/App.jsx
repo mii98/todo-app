@@ -9,11 +9,11 @@ import TaskEditor from './components/TaskEditor/TaskEditor';
 import DeleteTaskModal from "./components/DeleteTaskModal/DeleteTaskModal";
 
 
+const tasksUrl = `${import.meta.env.VITE_API_URL || ""}/api/v1/tasks`;
 
 
 
 function App() {
-
 
     const [tasks, setTasks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -31,7 +31,7 @@ function App() {
 
             try {
 
-                const response = await fetch('api/v1/tasks');
+                const response = await fetch(tasksUrl);
 
                 if (!response.ok) {
                     throw new Error('Could not load tasks.');
@@ -66,7 +66,7 @@ function App() {
     // ================================
     async function addTask(title, description, priority) {
 
-        const response = await fetch('/api/v1/tasks', {
+        const response = await fetch(tasksUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -102,7 +102,7 @@ function App() {
 
         if (!task) return;
 
-        const response = await fetch(`/api/v1/tasks/${id}`, {
+        const response = await fetch(`${tasksUrl}/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -150,7 +150,7 @@ function App() {
 
     async function saveTask(id, title, description, priority) {
 
-        const response = await fetch(`/api/v1/tasks/${id}`, {
+        const response = await fetch(`${tasksUrl}/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -192,7 +192,7 @@ function App() {
 
     async function deleteTask(id) {
 
-        const response = await fetch(`/api/v1/tasks/${id}`, {
+        const response = await fetch(`${tasksUrl}/${id}`, {
             method: "DELETE",
         });
 
